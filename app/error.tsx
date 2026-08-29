@@ -1,0 +1,2 @@
+'use client';
+export default function ErrorBoundary({reset}:{error:Error&{digest?:string};reset:()=>void}){return <div className="page"><section className="panel empty"><h1>Vamos tentar de novo?</h1><p>Algo não carregou como esperado. Isso não impede você de continuar estudando.</p><div className="button-row"><button className="button dark" onClick={reset}>Tentar novamente</button><a href="/treinar" className="button secondary">Ir para os treinos</a></div></section></div>;}

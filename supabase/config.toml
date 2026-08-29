@@ -1,0 +1,3 @@
+project_id = "fisica-com-sentido"
+[db.seed]
+enabled = false

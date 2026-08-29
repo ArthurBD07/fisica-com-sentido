@@ -1,0 +1,1 @@
+export default function Loading(){return <div className="page" role="status" aria-live="polite"><div className="panel"><h2>Preparando seu espaço de estudo…</h2><p>Um instante. Vamos por partes.</p></div></div>;}

@@ -1,0 +1,6 @@
+import 'server-only';
+import {type SupabaseClient} from '@supabase/supabase-js';
+import {AppError} from '@/src/lib/server';
+import {dailyLimit} from './validation';
+export async function reserve(db:SupabaseClient,user:string,hash:string,kind:string,text:string){const {data,error}=await db.rpc('reserve_ai',{p_user:user,p_hash:hash,p_kind:kind,p_text:text,p_limit:dailyLimit(process.env.DAILY_AI_LIMIT)});if(error||!data)throw new AppError('Não foi possível verificar sua cota. Por segurança, nenhuma análise foi iniciada.');if(data.status==='limited')throw new AppError('Você atingiu o limite diário de análises por IA. Continue treinando com as questões disponíveis e tente novamente amanhã.',429);if(data.status==='busy')throw new AppError('Você já tem uma análise em andamento. Aguarde a conclusão antes de enviar outra.',409);if(!['cached','reserved'].includes(data.status))throw new AppError('Não foi possível autorizar a análise.');return data as {status:'cached'|'reserved';result?:unknown;lease?:string};}
+export async function finish(db:SupabaseClient,user:string,hash:string,kind:string,lease:string,result:unknown|null){const {data,error}=await db.rpc('finish_ai',{p_user:user,p_hash:hash,p_kind:kind,p_lease:lease,p_result:result});if(error||data!==true)throw new AppError('A análise não pôde ser salva com segurança. Tente consultar suas questões mais tarde.');}
