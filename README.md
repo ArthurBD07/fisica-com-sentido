@@ -12,13 +12,13 @@ Treinador de interpretação para Física do ENEM. Primeiro entender, depois cal
 - Integração de conta, progresso e histórico pelo Supabase, quando configurado.
 - Foto da questão e foto opcional da resolução, quando a IA for habilitada e permitida.
 
-**Validado em 29/08/2026:** projeto Supabase Free, migrations, 10 questões no banco, cadastro/login por email, sessão, gravação das 10 etapas de um treino e tela de desempenho. O Gemini permanece desligado e a publicação na Vercel ainda deve ser validada após o primeiro deploy.
+**Não está validado em contas reais:** cadastro/login por email, projeto Supabase remoto, Gemini real e deploy Vercel. Nenhuma credencial foi fornecida. Não chame o sistema de pronto para produção antes de testar a lista no fim deste arquivo.
 
 ## COMO RODAR LOCALMENTE
 
 1. Instale o [Node.js LTS](https://nodejs.org/) (22.13 ou superior).
-2. Extraia o projeto e abra a pasta em um editor de sua preferência.
-3. Abra um terminal nessa pasta e execute:
+2. Extraia o projeto e abra a pasta no VS Code.
+3. No menu **Terminal → Novo terminal**, execute:
 
 ```bash
 npm ci
@@ -93,7 +93,7 @@ Se o uso for permitido:
 1. Entre em [Google AI Studio](https://aistudio.google.com/).
 2. Crie uma chave em um projeto **sem conta de faturamento vinculada**.
 3. Não clique em **Set up billing**, **Upgrade**, **Paid tier** ou ativação de teste pago.
-4. Verifique se `gemini-2.5-flash` ou `gemini-2.5-flash-lite` possui cota gratuita disponível na sua conta. Não há troca automática de modelo.
+4. Verifique se `gemini-3.6-flash` possui cota gratuita disponível na sua conta. Não há troca automática de modelo.
 5. Cole a chave em `GEMINI_API_KEY` no `.env.local` e no painel privado da Vercel.
 6. Somente após verificar os termos e a ausência de billing, defina `GEMINI_FREE_TIER_CONFIRMED=true` e `AI_ENABLED=true`.
 7. Se a API exigir billing ou deixar de oferecer cota gratuita, não ative. Use os treinos locais.
@@ -118,7 +118,7 @@ A IA pode errar física, transcrição e matemática. Validamos o formato e a es
 10. Atualize o Site URL e as URLs permitidas no Supabase.
 11. Abra o site no celular e execute a lista de verificação abaixo.
 
-O deploy só estará concluído quando a Vercel informar **Ready** e o endereço `*.vercel.app` for testado.
+Não tenho acesso à sua conta Vercel nem às chaves externas. Preparar o projeto não equivale a publicá-lo ou validar as contas reais.
 
 ## COMO ADICIONAR VARIÁVEIS DE AMBIENTE
 
