@@ -11,7 +11,7 @@ export const stepSchema = z.object({
   if(s.correct.some(i=>i>=s.options.length) || new Set(s.correct).size!==s.correct.length || (s.kind!=='multiple' && s.correct.length!==1)) ctx.addIssue({code:'custom',message:'Índices de resposta inválidos'});
 });
 export const questionSchema = z.object({
-  id: z.string().uuid(), title: text, topic: z.enum(topics), difficulty: z.enum(['Fácil','Média']),
+  id: z.string().uuid(), title: text, topic: z.enum(topics), difficulty: z.enum(['Fácil','Média','Difícil']),
   statement: z.string().min(30).max(6000), steps: z.array(stepSchema).min(9).max(12),
   diagram: z.array(z.string().min(1).max(100)).min(2).max(5),
   source: z.enum(['autoral','ia']),

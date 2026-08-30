@@ -93,7 +93,7 @@ Se o uso for permitido:
 1. Entre em [Google AI Studio](https://aistudio.google.com/).
 2. Crie uma chave em um projeto **sem conta de faturamento vinculada**.
 3. Não clique em **Set up billing**, **Upgrade**, **Paid tier** ou ativação de teste pago.
-4. Verifique se `gemini-3.6-flash` possui cota gratuita disponível na sua conta. Não há troca automática de modelo.
+4. Verifique se `gemini-3.1-flash-lite` possui cota gratuita disponível na sua conta. Ele aceita imagens e foi escolhido pela baixa latência. Não há troca automática de modelo.
 5. Cole a chave em `GEMINI_API_KEY` no `.env.local` e no painel privado da Vercel.
 6. Somente após verificar os termos e a ausência de billing, defina `GEMINI_FREE_TIER_CONFIRMED=true` e `AI_ENABLED=true`.
 7. Se a API exigir billing ou deixar de oferecer cota gratuita, não ative. Use os treinos locais.

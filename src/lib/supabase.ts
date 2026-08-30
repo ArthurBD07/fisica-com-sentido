@@ -21,7 +21,10 @@ export async function authHeaders() {
  return {Authorization:`Bearer ${data.session.access_token}`};
 }
 export async function api(path:string,init:RequestInit={}) {
- const response=await fetch(path,{...init,headers:{...await authHeaders(),...init.headers},signal:AbortSignal.timeout(55000)});
+ let response:Response;
+ try{response=await fetch(path,{...init,headers:{...await authHeaders(),...init.headers},signal:AbortSignal.timeout(50000)});}catch{
+  throw new Error('A conexão com a análise foi interrompida. Tente novamente em instantes.');
+ }
  const data=await response.json().catch(()=>({error:'Não foi possível concluir agora. Tente novamente mais tarde.'}));
  if(!response.ok) throw new Error(data.error||'Serviço temporariamente indisponível.');
  return data;
